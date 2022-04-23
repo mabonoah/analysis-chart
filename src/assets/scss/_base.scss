@@ -1,0 +1,35 @@
+@import "./partials/global-mixins";
+@import "./partials/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    @include box-sizing(border-box);
+    @include user-select(none);
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: $default-font-size;
+    background: var(--background-color);
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+    html {
+        font-size: 8px;
+    }
+}

@@ -1,0 +1,9 @@
+/** Override angular material style **/
+
+.mat-flat-button,
+.mat-raised-button,
+.mat-fab,
+.mat-mini-fab {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}

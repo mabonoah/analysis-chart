@@ -1,0 +1,35 @@
+@import "../../../../assets/scss/partials/variables";
+@import "../../../../assets/scss/partials/global-mixins";
+
+#app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 1rem 2rem;
+    height: $header-height;
+    font-size: $default-font-size;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+
+    #app-title {
+        cursor: pointer;
+        color: $title-color;
+    }
+
+    #lang-theme-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #lang {
+            margin: 0 4rem;
+            font-weight: bold;
+        }
+
+        #lang,
+        .theme-icon {
+            cursor: pointer;
+        }
+    }
+}

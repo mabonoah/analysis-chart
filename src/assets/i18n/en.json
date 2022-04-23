@@ -1,0 +1,12 @@
+{
+    "header": {
+        "title": "Analysis chart",
+        "targetLang": "ع",
+        "switchToLightMode":"Switch to Light Mode",
+        "switchToDarkMode":"Switch to Dark Mode"
+    },
+    "notFound": {
+        "subheader": "The page you requested was not found",
+        "goHome": "Go Home"
+    }
+}

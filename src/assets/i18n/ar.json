@@ -1,0 +1,12 @@
+{
+    "header": {
+        "title": "مخطط التحليل",
+        "targetLang": "EN",
+        "switchToLightMode":"قم بالتبديل إلى الوضع المضئ",
+        "switchToDarkMode":"قم بالتبديل إلى الوضع الداكن"
+    },
+    "notFound": {
+        "subheader": "لا نستطيع العثور على الصفحة التي تبحث عنها",
+        "goHome": "اذهب للصفحة الرئيسية"
+    }
+}

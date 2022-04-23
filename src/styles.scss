@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/partials/theme";
+@import './assets/scss/partials/override';
+@import "./assets/scss/partials/utilities";
+@import "./assets/scss/base";

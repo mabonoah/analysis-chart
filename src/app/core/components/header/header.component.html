@@ -1,1 +1,16 @@
-<p>header works!</p>
+<header id="app-header" [ngClass]="{'rtl' : translation.rtl}">
+    <!-- Title -->
+    <h3 id="app-title" (click)="navigateToHome()">{{'header.title' | translate}}</h3>
+
+    <!-- Language & Theme -->
+    <div id="lang-theme-container">
+        <!-- Language -->
+        <span id="lang" (click)="translation.switchLanguage()">{{'header.targetLang'|translate}}</span>
+
+        <!-- Theme mode -->
+        <span *ngIf="themeService.isDarkMode" class='material-icons theme-icon' (click)="themeService.onSwitchMode()"
+            [matTooltip]="'header.switchToDarkMode'| translate">light_mode</span>
+        <span *ngIf="!themeService.isDarkMode" class="material-icons theme-icon" (click)="themeService.onSwitchMode()"
+            [matTooltip]="'header.switchToLightMode' | translate">dark_mode</span>
+    </div>
+</header>
