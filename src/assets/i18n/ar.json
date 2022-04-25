@@ -14,5 +14,14 @@
         "selectCountry": "حدد الدولة",
         "selectCamp": "حدد المعسكر",
         "selectSchool": "حدد المدرسة"
+    },
+    "details": {
+        "title": "تفاصيل العنصر",
+        "country": "الدولة",
+        "camp": "المعسكر",
+        "school": "المدرسة",
+        "month": "الشهر",
+        "lessons": "عدد الدروس",
+        "back": "رجوع"
     }
 }

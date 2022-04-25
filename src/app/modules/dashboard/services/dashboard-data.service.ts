@@ -30,16 +30,16 @@ export class DashboardDataService {
   }
 
   /** Returns observable of specific data item */
-  getById(id: string): Observable<DataItem | undefined> {
+  getById(id: string): Observable<DataItem> {
     // If data items have value, find the specific item from them
     if (this.dataItems && this.dataItems.length) {
-      const dataItem: DataItem | undefined = this.dataItems.find((item) => item.id == id);
+      const dataItem: any = this.dataItems.find((item) => item.id == id);
       return of(dataItem);
     }
     // Gets all data items from the server to find the specific item from them
     return this.api.get(dataURL).pipe(
       map((data: DataItem[]) => {
-        const dataItem: DataItem | undefined = data.find((item) => item.id == id);
+        const dataItem: any = data.find((item) => item.id == id);
         return dataItem;
       })
     );

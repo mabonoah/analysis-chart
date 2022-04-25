@@ -1,1 +1,27 @@
-<p>details works!</p>
+<!-- Title -->
+<h4 id="details-title">{{'details.title' | translate}}</h4>
+
+<!-- Info -->
+<div class="item">
+    <label>{{'details.country' | translate}}:</label>
+    <span>{{dataItem.country}}</span>
+</div>
+<div class="item">
+    <label>{{'details.camp' | translate}}:</label>
+    <span>{{dataItem.camp}}</span>
+</div>
+<div class="item">
+    <label>{{'details.school' | translate}}:</label>
+    <span>{{dataItem.school}}</span>
+</div>
+<div class="item">
+    <label>{{'details.month' | translate}}:</label>
+    <span>{{dataItem.month}}</span>
+</div>
+<div class="item">
+    <label>{{'details.lessons' | translate}}:</label>
+    <span>{{dataItem.lessons}}</span>
+</div>
+
+<!-- back -->
+<button mat-raised-button (click)="navigateToDashboard()">{{'details.back' | translate}}</button>

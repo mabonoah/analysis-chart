@@ -14,5 +14,14 @@
         "selectCountry": "Select country",
         "selectCamp": "Select camp",
         "selectSchool": "Select school"
+    },
+    "details": {
+        "title": "Item details",
+        "country": "Country",
+        "camp": "Camp",
+        "school": "School",
+        "month": "Month",
+        "lessons": "Number of lessons",
+        "back": "Back"
     }
 }
