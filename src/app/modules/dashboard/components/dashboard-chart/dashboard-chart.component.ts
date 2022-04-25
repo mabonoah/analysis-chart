@@ -16,53 +16,7 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
   chartTitle: string = '';
   chartData: ChartDataItem[] = [];
   labels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  sharedOptions: ChartOptions = {
-    responsive: true,
-    aspectRatio: this.getAspectRatio(),
-    elements: {
-      point: {
-        radius: 5
-      }
-    },
-    plugins: {
-      tooltip: {
-        callbacks: {
-          title: () => '',
-          label: (tooltipItem) => this.getTooltipLabel(tooltipItem),
-          footer: (tooltipItems) => this.getTooltipFooter(tooltipItems)
-        }
-      }
-    },
-    onClick: (e: ChartEvent, elements: ActiveElement[]) => { this.navigateToDetails(elements) },
-  }
-  whiteThemeOptions: ChartOptions = {
-    color: '#666666',
-    scales: {
-      x: {
-        ticks: { color: '#666666' },
-        grid: { color: '#c6c7ca' }
-      },
-      y: {
-        ticks: { color: '#666666' },
-        grid: { color: '#c6c7ca' }
-      }
-    },
-    ...this.sharedOptions
-  };
-  darkThemeOptions: ChartOptions = {
-    color: 'white',
-    scales: {
-      x: {
-        ticks: { color: 'white' },
-        grid: { color: 'rgba(255,255,255,0.1)' }
-      },
-      y: {
-        ticks: { color: 'white' },
-        grid: { color: 'rgba(255,255,255,0.1)' }
-      }
-    },
-    ...this.sharedOptions
-  };
+  private _aspectRatio: number;
 
   constructor(
     private ngZone: NgZone,
@@ -72,14 +26,84 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.onResizeWindow();
+    this.setAspectRatio();
     this.onUpdateSchools();
   }
 
-  private getAspectRatio(): number {
+  get whiteThemeOptions(): ChartOptions {
+    return {
+      color: '#666666',
+      scales: {
+        x: {
+          ticks: { color: '#666666' },
+          grid: { color: '#c6c7ca' }
+        },
+        y: {
+          ticks: { color: '#666666' },
+          grid: { color: '#c6c7ca' }
+        }
+      },
+      ...this.sharedOptions
+    }
+  };
+
+  get darkThemeOptions(): ChartOptions {
+    return {
+      color: 'white',
+      scales: {
+        x: {
+          ticks: { color: 'white' },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        },
+        y: {
+          ticks: { color: 'white' },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        }
+      },
+      ...this.sharedOptions
+    }
+  };
+
+  private get sharedOptions(): ChartOptions {
+    return {
+      responsive: true,
+      aspectRatio: this.aspectRatio,
+      elements: {
+        point: {
+          radius: 5
+        }
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: () => '',
+            label: (tooltipItem) => this.getTooltipLabel(tooltipItem),
+            footer: (tooltipItems) => this.getTooltipFooter(tooltipItems)
+          }
+        }
+      },
+      onClick: (e: ChartEvent, elements: ActiveElement[]) => { this.navigateToDetails(elements) },
+    }
+  }
+
+  private get aspectRatio(): number {
+    return this._aspectRatio;
+  }
+
+  private set aspectRatio(value: number) {
+    this._aspectRatio = value;
+  }
+
+  private onResizeWindow(): void {
+    window.onresize = () => this.setAspectRatio();
+  }
+
+  private setAspectRatio(): void {
     const screenWidth: number = window.screen.width;
     const maxSmallDevice: number = 767.98;
-    if (screenWidth > maxSmallDevice) return 3.5;
-    return 1.5;
+    if (screenWidth > maxSmallDevice) this.aspectRatio = 3.3;
+    else this.aspectRatio = 1.6;
   }
 
   private onUpdateSchools() {
