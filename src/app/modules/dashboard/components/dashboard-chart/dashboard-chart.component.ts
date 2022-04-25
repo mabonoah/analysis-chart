@@ -18,10 +18,10 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
   labels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   sharedOptions: ChartOptions = {
     responsive: true,
-    aspectRatio: 3,
+    aspectRatio: this.getAspectRatio(),
     elements: {
       point: {
-        radius: 5,
+        radius: 5
       }
     },
     plugins: {
@@ -73,6 +73,13 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.onUpdateSchools();
+  }
+
+  private getAspectRatio(): number {
+    const screenWidth: number = window.screen.width;
+    const maxSmallDevice: number = 767.98;
+    if (screenWidth > maxSmallDevice) return 3.5;
+    return 1.5;
   }
 
   private onUpdateSchools() {
