@@ -1,3 +1,7 @@
+<!-- Title -->
+<h5>{{chartTitle}}</h5>
+
+<!-- Canvas -->
 <canvas id="chart" baseChart [type]="'line'" [datasets]="chartData" [labels]="labels"
     [options]="themeService.isDarkMode ? darkThemeOptions : whiteThemeOptions" [legend]="true">
 </canvas>
