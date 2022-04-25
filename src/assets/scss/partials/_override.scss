@@ -9,6 +9,9 @@
 .mat-mini-fab {
     color: var(--text-color);
     background-color: var(--background-color);
+    min-width: 6.4rem !important;
+    line-height: 3.6rem !important;
+    padding: 0 1.6rem !important;
 }
 
 // Form-field Select

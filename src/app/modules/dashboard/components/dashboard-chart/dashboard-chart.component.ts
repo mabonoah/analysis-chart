@@ -17,7 +17,7 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
   labels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   sharedOptions: ChartOptions = {
     responsive: true,
-    aspectRatio: 4,
+    aspectRatio: 3,
     elements: {
       point: {
         radius: 5,
