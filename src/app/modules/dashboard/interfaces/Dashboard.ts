@@ -22,5 +22,6 @@ export interface SelectedDropdownsData {
 export interface ChartDataItem {
     label: string,
     data: { x: string, y: number }[],
-    info: DataItem[]
+    info: DataItem[],
+    totalLessons:number
 }

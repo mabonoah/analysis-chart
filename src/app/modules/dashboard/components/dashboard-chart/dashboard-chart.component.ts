@@ -13,6 +13,7 @@ import { DashboardDataService } from '../../services/dashboard-data.service';
 })
 export class DashboardChartComponent implements OnInit, OnDestroy {
   private alive: boolean = true;
+  chartTitle: string = '';
   chartData: ChartDataItem[] = [];
   labels: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   sharedOptions: ChartOptions = {
@@ -21,6 +22,15 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
     elements: {
       point: {
         radius: 5,
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: () => '',
+          label: (tooltipItem) => this.getTooltipLabel(tooltipItem),
+          footer: (tooltipItems) => this.getTooltipFooter(tooltipItems)
+        }
       }
     },
     onClick: (e: ChartEvent, elements: ActiveElement[]) => { this.navigateToDetails(elements) },
@@ -80,12 +90,39 @@ export class DashboardChartComponent implements OnInit, OnDestroy {
     let dataItems: DataItem[] = [];
     for (const school in groupedData) {
       dataItems = groupedData[school];
-      chartDataItem = { label: school, data: [], info: dataItems }
+      chartDataItem = { label: '', totalLessons: 0, data: [], info: dataItems }
       dataItems.map((item: DataItem) => {
+        chartDataItem.totalLessons += item.lessons;
         chartDataItem.data.push({ x: item.month, y: item.lessons });
       })
+      chartDataItem.label = `${chartDataItem.totalLessons} lessons in ${school}`;
       this.chartData.push(chartDataItem);
     }
+    this.setChartTitle();
+  }
+
+  private setChartTitle(): void {
+    let totalCampLessons: number = 0;
+    this.chartData.map((item: ChartDataItem) => {
+      totalCampLessons += item.totalLessons;
+    })
+    const camp: string = this.chartData[0].info[0].camp;
+    this.chartTitle = `${totalCampLessons} lessons in ${camp}`;
+  }
+
+  private getTooltipLabel(tooltipItem: any) {
+    const datasetIndex: number = tooltipItem.datasetIndex;
+    const school: string = this.chartData[datasetIndex].info[0].school;
+    return school;
+  }
+
+  private getTooltipFooter(tooltipItems: any[]) {
+    const index: number = tooltipItems[0].dataIndex;
+    const datasetIndex: number = tooltipItems[0].datasetIndex;
+    const totalLessons: number = tooltipItems[0].dataset.totalLessons;
+    const lessons: number = this.chartData[datasetIndex].info[index].lessons;
+    const percentage = Math.round(lessons / totalLessons * 100);
+    return `${lessons} lessons | ${percentage}%`;
   }
 
   private navigateToDetails(elements: ActiveElement[]): void {
