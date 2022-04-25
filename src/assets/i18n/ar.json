@@ -2,11 +2,17 @@
     "header": {
         "title": "مخطط التحليل",
         "targetLang": "EN",
-        "switchToLightMode":"قم بالتبديل إلى الوضع المضئ",
-        "switchToDarkMode":"قم بالتبديل إلى الوضع الداكن"
+        "switchToLightMode": "قم بالتبديل إلى الوضع المضئ",
+        "switchToDarkMode": "قم بالتبديل إلى الوضع الداكن"
     },
     "notFound": {
         "subheader": "لا نستطيع العثور على الصفحة التي تبحث عنها",
         "goHome": "اذهب للصفحة الرئيسية"
+    },
+    "dashboard": {
+        "title": "عدد الدروس",
+        "selectCountry": "حدد الدولة",
+        "selectCamp": "حدد المعسكر",
+        "selectSchool": "حدد المدرسة"
     }
 }

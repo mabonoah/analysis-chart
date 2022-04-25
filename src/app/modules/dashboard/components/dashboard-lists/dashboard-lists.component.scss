@@ -1,0 +1,16 @@
+:host ::ng-deep {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+
+    .dashboard-list {
+        display: flex;
+        align-items: center;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+                
+        mat-form-field {
+            margin-inline-end: 6rem;
+        }
+    }
+}

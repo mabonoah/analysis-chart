@@ -1,9 +1,37 @@
+@import "../partials/variables";
+
 /** Override angular material style **/
 
+// Button
 .mat-flat-button,
 .mat-raised-button,
 .mat-fab,
 .mat-mini-fab {
     color: var(--text-color);
     background-color: var(--background-color);
+}
+
+// Form-field Select
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding: 0;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    display: none;
+}
+
+// Select
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $main-color;
+}
+
+.mat-select-value,
+.mat-select-arrow,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: var(--text-color);
 }

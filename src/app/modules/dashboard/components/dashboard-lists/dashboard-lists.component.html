@@ -1,0 +1,41 @@
+<!-- Country list -->
+<div class="dashboard-list">
+    <mat-label [ngStyle]="{'width' : translation.rtl ? '7rem' : '10rem'}">{{'dashboard.selectCountry' | translate}}
+    </mat-label>
+    <mat-form-field>
+        <mat-select [(ngModel)]="selectedDropdownsData.country" (selectionChange)="onChangeCountry()">
+            <mat-option *ngFor="let country of dropdownsData.countries" [value]="country">
+                {{country}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<!-- Camp list -->
+<div class="dashboard-list">
+    <mat-label [ngStyle]="{'width' : translation.rtl ? '7rem' : '10rem'}">{{'dashboard.selectCamp' | translate}}
+    </mat-label>
+    <mat-form-field>
+        <mat-select [disabled]="!selectedDropdownsData.country" [(ngModel)]="selectedDropdownsData.camp"
+            (selectionChange)="onChangeCamp()">
+            <mat-option *ngFor="let camp of dropdownsData.camps" [value]="camp">
+                {{camp}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<!-- School list -->
+<div class="dashboard-list">
+    <mat-label [ngStyle]="{'width' : translation.rtl ? '7rem' : '10rem'}">{{'dashboard.selectSchool' | translate}}
+    </mat-label>
+    <mat-form-field>
+        <mat-select [disabled]="!selectedDropdownsData.camp" [(ngModel)]="selectedDropdownsData.school"
+            (selectionChange)="onChangeSchool()">
+            <mat-option value="all">Show All</mat-option>
+            <mat-option *ngFor="let school of dropdownsData.schools" [value]="school">
+                {{school}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

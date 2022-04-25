@@ -9,8 +9,8 @@
 
         <!-- Theme mode -->
         <span *ngIf="themeService.isDarkMode" class='material-icons theme-icon' (click)="themeService.onSwitchMode()"
-            [matTooltip]="'header.switchToDarkMode'| translate">light_mode</span>
+            [matTooltip]="'header.switchToLightMode'| translate">light_mode</span>
         <span *ngIf="!themeService.isDarkMode" class="material-icons theme-icon" (click)="themeService.onSwitchMode()"
-            [matTooltip]="'header.switchToLightMode' | translate">dark_mode</span>
+            [matTooltip]="'header.switchToDarkMode' | translate">dark_mode</span>
     </div>
 </header>
